@@ -34,9 +34,9 @@ def lost_pet():
         # collect information from request.form (using the names
         # attributes from your inputs) and create a database entry;
         # then google "URL redirect"
-
+        pet_id = create_id()
         db.insert({
-            "id":create_id(),
+            "id":pet_id,
             "name":request.form["name"],
             "address":request.form["address"],
             "info":request.form["info"],
@@ -44,7 +44,8 @@ def lost_pet():
             "date":request.form["date"],
             "coord":gmaps.geocode(request.form["address"])[0]["geometry"]["location"]
         })
-        return redirect(url_for("lost_found"))
+        # return redirect(url_for("lost_found"))
+        return redirect(url_for("pet_info", pet_id = pet_id))
     return render_template("lostpet.html")
 
 @app.route("/lost_pet/<int:pet_id>")
