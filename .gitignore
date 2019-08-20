@@ -1,1 +1,2 @@
-"*.pyc" 
+*.pyc
+my_config.py

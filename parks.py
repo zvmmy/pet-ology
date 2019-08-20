@@ -5,7 +5,7 @@ parks_beaches = [
         "address": "6046 West Lake Sammamish Pkwy NE, Redmond, WA 98052",
     },
     {
-        "name": "Jasper's Dog Park",
+        "name": "Jasper Dog Park",
         "address": "11225 NE 120th St, Kirkland, WA 98034",
     },
     {

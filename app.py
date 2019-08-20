@@ -1,7 +1,14 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from tinydb import TinyDB, Query
 import googlemaps
-gmaps = googlemaps.Client(key= "AIzaSyDUHam462KHkSSRNdEfFCtPBeQL1FQ7mG4")
+
+try:
+    from my_config import API_KEY
+except ImportError:
+    API_KEY = os.environ.get('API_KEY')
+
+gmaps = googlemaps.Client(key=API_KEY)
 db = TinyDB('db/db.json')
 parks_db = TinyDB("db/parks.json")
 # {"_default": {"1": {"type": "name"}}}
@@ -19,7 +26,7 @@ def index():
 @app.route("/lost_found") ## telling the URL of the project, connect button to that link
 def lost_found():
     pets = db.all()
-    return render_template("lstnfnd.html", pets=pets)
+    return render_template("lstnfnd.html", pets=pets, API_KEY=API_KEY)
 
 @app.route("/lost_pet/", methods=["GET", "POST"])
 def lost_pet():
@@ -57,7 +64,7 @@ def pet_info(pet_id):
 @app.route("/parks_beaches")
 def parks_beaches():
     parks=parks_db.all()
-    return render_template("parks_beaches.html", parks=parks)
+    return render_template("parks_beaches.html", parks=parks, API_KEY=API_KEY)
 
 @app.route("/about_us")
 def about_us():
