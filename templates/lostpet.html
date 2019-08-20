@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Lost Pet Form</title>
+{% endblock %}
+
+{% block body %}
+  <center>
+  <h1>Lost Pet Form</h1>
+  </center>
+  <form style="margin-left:10%; margin-bottom: 10%" method="POST">
+    <!-- <input type='hidden' name='_csrf_token' value='{ csrf_token() }'> -->
+    <section class="name">
+      <label for="name">What's your pet's name? </label>
+      <br>
+      <input type="text" name="name" id="name" required>
+    </section>
+    <br>
+    <section class="address">
+      <label for="address">Where was your pet last seen?</label>
+      <br>
+      <textarea id="address" name="address" rows="2" cols="40" required></textarea>
+    </section>
+    <br>
+    <section class="info">
+      <label for="info">Additional information</label>
+      <br>
+      <textarea id="info" name="info" rows="6" cols="50" required></textarea>
+    </section>
+    <br>
+
+    <section>
+      <label for="contact">Contact information</label>
+      <br>
+      <textarea id="contact" name="contact" rows="6" cols="50" required></textarea>
+    </section>
+    
+    <br>
+    <section>
+      <label for="date">When did you lose your pet?</label>
+      <br>
+      <input type="text" name="date" id="date" required>
+    </section>
+    <br>
+    <section>
+      <input type="submit" value="submit">
+    </section>
+
+
+  </form>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+      <link rel='stylesheet' href= "{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      {% block head %}{% endblock %}
+  </head>
+
+  <body>
+    <center><h1>Pet-ology</h1></center>
+    <div class="container">
+      <div class = "navbar">
+
+          <div class="row align-items-start">
+            <div class="col">
+              <button type="button" class="btn btn-light"><a style="color: brown;"href="{{ url_for('index') }}">Home</a></button>
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+              <div class="col">
+                <button type="button" class="btn btn-light" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Lost and Found Map
+                File for Lost Dog">
+                  <a style="color: brown;"href="{{ url_for('lost_found') }}">Lost and Found</a>
+                </button>
+              </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col">
+              <button type="button" class="btn btn-light"><a style="color: brown;"href="{{ url_for('parks_beaches') }}">Parks and Beaches</a></button>
+            </div>
+          </div>
+
+          <div class="row align-items-end">
+              <div class="col">
+                <button type="button" class="btn btn-light" data-container="body" data-toggle="popover" data-placement="bottom" data-content="About the creators, Bios, Pictures">
+                  <a style="color: brown;"href="{{ url_for('about_us') }}">About</a>
+                </button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  <!--  <div class = "navbar">
+      <br>
+      <a href="{{ url_for('index') }}">Home</a>
+      <br>
+      <a href="{{ url_for('lost_found') }}">Lost and Found</a>
+      <br>
+      <a href="{{ url_for('about_us') }}">About</a>
+
+    </div> -->
+
+    {% block body%}{% endblock %}
+
+  </body>
+
+</html>

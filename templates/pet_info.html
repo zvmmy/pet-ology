@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>{{ pet.name }}</title>
+{% endblock %}
+
+{% block body %}
+<body>
+  <center>
+    <br>
+    <br>
+    <!-- <div class="box black"> </div> -->
+    <!-- <span style="background-color: white"> -->
+      <!-- <font color = "black"> -->
+    <div class="pet-info">
+      <h1 style = "color: black"> Lost Pet Information </h1>
+      <br>   <h2>Name: {{ pet.name }}</h2>
+      <br>   <h2>Address: {{ pet.address }}</h2>
+      <br>   <h2>Pet information: {{ pet.info }}</h2>
+      <br>   <h2>Contact: {{ pet.contact }}</h2>
+      <br>   <h2>Lost date: {{ pet.date }}</h2>
+    </div>
+      <!-- </font> -->
+    <!-- </span> -->
+
+
+    <br>
+    <br>
+  </center>
+      </body>
+
+
+{% endblock %}
