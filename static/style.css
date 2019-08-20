@@ -34,6 +34,10 @@ a {
   color: 89701;
 }
 
+.lostpet {
+  padding: 20px 20px;
+}
+
 
 /* img {
   top: 20px;
@@ -51,5 +55,6 @@ a {
 #map {
   height: 400px;
   width: 850px;
-  z-index: 99;
+  margin:auto;
+  z-index: 100 !important;
 }
