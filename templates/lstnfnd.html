@@ -2,15 +2,16 @@
 
 {% block head %}
   <title>Pet-ology | Lost and Found</title>
+
 {% endblock %}
 
 {% block body %}
 
   <center>
   <h1>Lost and Found</h1>
-  </center>
-  <center>
   <div id="map"></div>
+  </center>
+
 
   <div class="lostpet">
     <div class="col">
@@ -18,14 +19,26 @@
     </div>
   </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUHam462KHkSSRNdEfFCtPBeQL1FQ7mG4"
+  <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 47.693849, lng: -122.144860},
+          zoom: 8,
+        });
+
+      {% for pet in pets %}
+      new google.maps.Marker({
+         position: {lat: {{ pet.coord.lat }}, lng: {{ pet.coord.lng }}},
+         map: map,
+         title: "{{ pet.name }}",
+      });
+      {% endfor %}
+    }
+  </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{ API_KEY }}&callback=initMap"
 async defer></script>
-
-<script>
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 47.693849, lng: -122.144860},
-      zoom: 8
-    });
-</script>
-
+<br>
+<br>
 {% endblock %}

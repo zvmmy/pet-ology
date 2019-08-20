@@ -9,9 +9,33 @@
   <center>
   <h1>Parks and Beaches</h1>
   </center>
+  <div id="map"></div>
 
-  <center><img src ="chion.jpg" width="850px" height="400px" style = "margin-left:100px;"></center></img>
+  <script>
+      var map;
+      function initMap() {
+        // var MP = {lat: 47.693849, lng: -122.144860};
+        // var HP = {lat: }
+        map = new google.maps.Map(document.getElementById('map'), {
+          center:  {lat: 47.693849, lng: -122.144860},
+          zoom: 10,
+        });
 
+
+        {% for park in parks %}
+        new google.maps.Marker({
+           position: {lat: {{ park.coord.lat }}, lng: {{ park.coord.lng }}},
+           map: map,
+           title: "{{ park.name }}",
+        });
+        {% endfor %}
+      }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ API_KEY }}&callback=initMap"
+  async defer></script>
+  <br>
+  <br>
 
 
 {% endblock %}
